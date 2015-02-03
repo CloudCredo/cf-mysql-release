@@ -279,10 +279,11 @@ The brokers each register a route with the router, which load balances requests 
 <a name="bosh-lite"></a>
 #### BOSH-lite
 
-1. Generate the manifest using a bosh-lite specific script and a stub provided for you, `bosh-lite/cf-mysql-stub-spiff.yml`.
+1. Generate the manifest using a bosh-lite specific script and a stub provided for you based on the
+  number of nodes that you would like, 1 or 3 (the default).
 
     ```
-    $ ./bosh-lite/make_manifest
+    $ ./bosh-lite/make_manifest <number of nodes>
     ```
     The resulting file, `bosh-lite/manifests/cf-mysql-manifest.yml` is your deployment manifest. To modify the deployment configuration, you can edit the stub and regenerate the manifest or edit the manifest directly.
 
