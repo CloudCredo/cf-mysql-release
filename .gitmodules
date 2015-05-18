@@ -94,3 +94,6 @@
 [submodule "src/github.com/imdario/mergo"]
 	path = src/github.com/imdario/mergo
 	url = https://github.com/imdario/mergo
+[submodule "src/github.com/pivotal-cf-experimental/cf-mysql-broker"]
+	path = src/github.com/pivotal-cf-experimental/cf-mysql-broker
+	url = /Users/pivotal/workspace/cf-mysql-release/src/github.com/pivotal-cf-experimental/cf-mysql-broker/

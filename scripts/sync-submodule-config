@@ -16,6 +16,8 @@ go install github.com/vito/gosub
     -test github.com/cloudfoundry-incubator/switchboard/... \
     -app  github.com/pivotal-cf-experimental/cf-mysql-quota-enforcer/... \
     -test github.com/pivotal-cf-experimental/cf-mysql-quota-enforcer/... \
+    -app  github.com/pivotal-cf-experimental/cf-mysql-broker/... \
+    -test github.com/pivotal-cf-experimental/cf-mysql-broker/...
 
   # exclude these otherwise `gosub sync` will delete them
   echo gra-log-purger # not yet a submodule

@@ -17,6 +17,7 @@ packages:
 - ruby
 - mysqlclient
 - cf-mysql-broker
+- cf-mysql-broker-go
 - common
 - mariadb
 - syslog_aggregator

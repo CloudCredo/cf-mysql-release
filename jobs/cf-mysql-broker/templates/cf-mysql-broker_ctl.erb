@@ -7,6 +7,7 @@ PACKAGE_DIR=/var/vcap/packages/cf-mysql-broker
 RUN_DIR=/var/vcap/sys/run/cf-mysql-broker
 LOG_DIR=/var/vcap/sys/log/cf-mysql-broker
 PIDFILE=$RUN_DIR/unicorn.pid
+GO_PIDFILE=$RUN_DIR/go-broker.pid
 
 export PATH=/var/vcap/packages/ruby/bin:$PATH
 export BUNDLE_GEMFILE=/var/vcap/packages/cf-mysql-broker/Gemfile
@@ -25,6 +26,7 @@ fi
 case $1 in
 
   start)
+  
     mkdir -p $RUN_DIR
     mkdir -p $LOG_DIR
 
@@ -63,10 +65,16 @@ case $1 in
     bundle exec unicorn -c $JOB_DIR/config/unicorn.conf.rb 2>&1 \
         | tee -a $LOG_DIR/cf-mysql-broker.log \
         | logger -p local1.error -t mysql-broker &
+
+    echo $$ > $GO_PIDFILE
+    exec /var/vcap/packages/cf-mysql-broker-go/bin/cf-mysql-broker 2>&1 \
+        | tee -a $LOG_DIR/cf-mysql-broker-go.log \
+        | logger -p local1.error -t mysql-broker-go &
     ;;
 
   stop)
     kill -QUIT `cat $PIDFILE`
+    kill -QUIT `cat $GO_PIDFILE`
     ;;
 
   *)
