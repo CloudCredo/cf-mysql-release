@@ -10,8 +10,6 @@ templates:
   quota_enforcer_config.yml.erb: bin/quota_enforcer_config.yml
   syslog_forwarder.conf.erb: config/syslog_forwarder.conf
   healthcheck.sh.erb: bin/healthcheck.sh
-  registrar_settings.yml.erb: config/registrar_settings.yml
-  route-registrar_ctl.erb: bin/route-registrar_ctl
 
 packages:
 - ruby
@@ -20,7 +18,6 @@ packages:
 - common
 - mariadb
 - syslog_aggregator
-- route-registrar
 - quota-enforcer
 
 properties:
@@ -71,15 +68,6 @@ properties:
   skip_ssl_validation:
     description: 'Determines whether dashboard verifies SSL certificates when communicating with Cloud Controller and UAA'
     default: false
-
-  nats.user:
-    description: 'Username for broker to register a route with NATS'
-  nats.password:
-    description: 'Password for broker to register a route with NATS'
-  nats.port:
-    description: 'IP port of Cloud Foundry NATS server'
-  nats.machines:
-    description: 'IP of each NATS cluster member.'
 
   networks.broker_network:
     description: 'Name of the network the broker will get its IP address from'
